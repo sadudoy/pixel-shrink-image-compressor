@@ -4,7 +4,7 @@
 
 **PixelShrink** is a free, browser-based image compressor and resizer that lets you optimize JPG, PNG, and WebP images without uploading them to a server.
 
-**Live website:** https://pixelshrink.web.app/
+**Live website:** https://pixelshrinkapp.web.app/
 
 ## Features
 
