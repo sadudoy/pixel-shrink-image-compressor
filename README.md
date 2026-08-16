@@ -122,12 +122,6 @@ firebase deploy
 After deployment, the application can be accessed from your Firebase Hosting URL.
 
 
-## Screenshots & Social Preview
-
-`og-image.svg` is used as the social sharing preview image and provides a simple PixelShrink visual identity without requiring an external logo asset.
-
-You can replace it later with a custom branded image or screenshot.
-
 ## Roadmap
 
 Potential future improvements include:
@@ -161,4 +155,4 @@ Add your preferred open-source license here before publishing the repository as 
 ### Author
 Sad Ibna Forid
 
-Bangladesh Army University of Science and Technology, Sadipur
+Bangladesh Army University of Science and Technology, Saidpur
