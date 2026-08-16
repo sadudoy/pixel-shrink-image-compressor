@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelShrink — Image Compressor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <header class="header">
+        <div class="logo">
+          <div class="logo-icon">✦</div>
+          <span>PixelShrink</span>
+        </div>
+
+        <span class="badge">100% Private</span>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">IMAGE OPTIMIZER</p>
+        <h1>Compress images.<br /><span>Keep the quality.</span></h1>
+        <p class="subtitle">
+          Reduce image file sizes directly in your browser. Your images never
+          leave your device.
+        </p>
+      </section>
+
+
+      <section class="upload-card" id="dropZone">
+        <input type="file" id="imageInput" accept="image/*" hidden />
+
+        <div class="upload-icon">↑</div>
+
+        <h2>Drop your image here</h2>
+
+        <p>
+          or
+          <button class="browse-btn" id="browseBtn">browse files</button>
+        </p>
+
+        <small>JPG, PNG, WebP • Up to 50MB</small>
+      </section>
+
+
+      <section class="panel">
+        <div class="panel-title">
+          <div>
+            <h2>Resize & compress</h2>
+            <p>Choose the exact output dimensions and quality</p>
+          </div>
+
+          <span class="settings-icon">⚙</span>
+        </div>
+
+
+        <div class="dimension-section">
+          <div class="section-label">
+            <span>Dimensions</span>
+            <span id="originalDimensions">Original: —</span>
+          </div>
+
+          <div class="dimension-row">
+            <div class="dimension-input">
+              <label for="width">Width</label>
+
+              <div class="input-with-unit">
+                <input type="number" id="width" min="1" placeholder="Width" />
+                <span>px</span>
+              </div>
+            </div>
+
+            <button
+              id="aspectLock"
+              class="aspect-lock active"
+              title="Keep aspect ratio"
+            >
+              <i class="fas fa-link"></i>
+            </button>
+
+            <div class="dimension-input">
+              <label for="height">Height</label>
+
+              <div class="input-with-unit">
+                <input type="number" id="height" min="1" placeholder="Height" />
+                <span>px</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="resize-presets">
+            <button data-width="1920">1920px</button>
+            <button data-width="1280">1280px</button>
+            <button data-width="1080">1080px</button>
+            <button data-width="720">720px</button>
+            <button data-width="480">480px</button>
+          </div>
+        </div>
+
+        <div class="setting quality-setting">
+          <div class="setting-header">
+            <label for="quality">Quality</label>
+            <strong> <span id="qualityValue">80</span>% </strong>
+          </div>
+
+          <input type="range" id="quality" min="10" max="100" value="80" />
+        </div>
+
+        <div class="settings-grid">
+          <div class="setting">
+            <label for="format"> Output format </label>
+
+            <select id="format">
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/webp">WebP</option>
+              <option value="image/png">PNG</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="compressBtn" class="compress-btn">
+          <span>Resize & compress</span>
+          <span>→</span>
+        </button>
+      </section>
+
+      <footer>
+        <div class="footer-info">
+          <span
+            ><i class="fas fa-lock"></i> Your images stay on your device</span
+          >
+          <span>•</span>
+          <span>No upload required</span>
+          <span>•</span>
+          <span>©Sad Ibna Forid. All Rights Reserved</span>
+        </div>
+
+        <div class="developer-links">
+          <a href="https://linkedin.com/in/sadudoy" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/sadudoy" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="mailto:sadudoy29@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
