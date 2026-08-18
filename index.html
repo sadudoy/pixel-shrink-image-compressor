@@ -31,23 +31,31 @@
         </p>
       </section>
 
-
+      <!-- Upload -->
       <section class="upload-card" id="dropZone">
-        <input type="file" id="imageInput" accept="image/*" hidden />
+        <input type="file" id="imageInput" accept="image/*" hidden multiple />
 
         <div class="upload-icon">↑</div>
 
-        <h2>Drop your image here</h2>
+        <h2>Drop your images here</h2>
 
         <p>
           or
           <button class="browse-btn" id="browseBtn">browse files</button>
         </p>
 
-        <small>JPG, PNG, WebP • Up to 50MB</small>
+        <small>JPG, WebP • Up to 50MB per file</small>
+
+        <!-- Container for small upload previews -->
+        <div id="uploadPreviews" class="upload-previews"></div>
+
+        <!-- Clear All Button (Hidden by default) -->
+        <button id="clearBtn" class="clear-btn" style="display: none">
+          <i class="fas fa-trash-alt"></i> Clear All Files
+        </button>
       </section>
 
-
+      <!-- Controls -->
       <section class="panel">
         <div class="panel-title">
           <div>
@@ -58,7 +66,7 @@
           <span class="settings-icon">⚙</span>
         </div>
 
-
+        <!-- Dimensions -->
         <div class="dimension-section">
           <div class="section-label">
             <span>Dimensions</span>
@@ -118,13 +126,12 @@
             <select id="format">
               <option value="image/jpeg">JPEG</option>
               <option value="image/webp">WebP</option>
-              <option value="image/png">PNG</option>
             </select>
           </div>
         </div>
 
         <button id="compressBtn" class="compress-btn">
-          <span>Resize & compress</span>
+          <span>Resize & compress All</span>
           <span>→</span>
         </button>
       </section>
