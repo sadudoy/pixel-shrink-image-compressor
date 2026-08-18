@@ -34,7 +34,7 @@ This makes PixelShrink useful for users who want to reduce image file size while
 2. Set the desired width and height.
 3. Choose whether to keep the aspect ratio locked.
 4. Adjust the compression quality.
-5. Select JPEG, WebP, or PNG output.
+5. Select JPEG or WebP output.
 6. Click **Resize & compress**.
 7. Preview and download the optimized image.
 
@@ -48,7 +48,6 @@ PixelShrink accepts browser-supported image formats through the image file picke
 
 - JPEG
 - WebP
-- PNG
 
 ## Technology
 
@@ -63,19 +62,6 @@ PixelShrink is built with lightweight web technologies:
 - Firebase Hosting
 
 No backend image-processing service is required for the core compression workflow.
-
-## Project Structure
-
-```text
-pixelshrink/
-├── index.html
-├── style.css
-├── script.js
-├── og-image.svg
-├── robots.txt
-├── sitemap.xml
-└── firebase.json
-```
 
 ## Running Locally
 
@@ -121,16 +107,12 @@ firebase deploy
 
 After deployment, the application can be accessed from your Firebase Hosting URL.
 
-
 ## Roadmap
 
 Potential future improvements include:
 
-- Batch image compression
 - Additional resize presets
 - More advanced image optimization controls
-
-
 
 ## Contributing
 
@@ -143,16 +125,14 @@ Contributions, suggestions, and bug reports are welcome.
 5. Commit your changes.
 6. Open a pull request.
 
-## License
-
-Add your preferred open-source license here before publishing the repository as an open-source project.
-
 ---
 
 **PixelShrink** — compress images, reduce file size, and resize images directly in your browser.
 
 ---
+
 ### Author
+
 Sad Ibna Forid
 
 Bangladesh Army University of Science and Technology, Saidpur
