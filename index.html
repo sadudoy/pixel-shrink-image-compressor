@@ -1,166 +1,356 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PixelShrink — Image Compressor</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body>
-    <main class="app">
-      <header class="header">
-        <div class="logo">
-          <div class="logo-icon">✦</div>
-          <span>PixelShrink</span>
-        </div>
+      <title>PixelShrink | Free Bulk Image Compressor (100% Private)</title>
+      <meta
+        name="title"
+        content="PixelShrink | Free Bulk Image Compressor (100% Private)"
+      />
+      <meta
+        name="description"
+        content="Compress JPEG and WebP images directly in your browser. Reduce file sizes in bulk without uploading to a server. Fast, free, and 100% private."
+      />
+      <meta
+        name="keywords"
+        content="image compressor, bulk image resize, compress jpeg, compress webp, reduce image size, private image compressor, browser based image optimization"
+      />
 
-        <span class="badge">100% Private</span>
-      </header>
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://pixelshrinkapp.web.app/" />
+      <meta
+        property="og:title"
+        content="PixelShrink | Free Bulk Image Compressor"
+      />
+      <meta
+        property="og:description"
+        content="Compress images directly in your browser. Reduce file sizes in bulk without uploading to a server. 100% private."
+      />
+      <meta
+        property="og:image"
+        content="https://pixelshrinkapp.web.app/og-image.jpg"
+      />
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "PixelShrink",
+          "url": "https://pixelshrinkapp.web.app/",
+          "description": "A secure, browser-based bulk image compressor for JPEG and WebP files.",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      </script>
 
-      <section class="hero">
-        <p class="eyebrow">IMAGE OPTIMIZER</p>
-        <h1>Compress images.<br /><span>Keep the quality.</span></h1>
-        <p class="subtitle">
-          Reduce image file sizes directly in your browser. Your images never
-          leave your device.
-        </p>
-      </section>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      />
+      <link rel="stylesheet" href="style.css" />
+    </head>
 
-      <!-- Upload -->
-      <section class="upload-card" id="dropZone">
-        <input type="file" id="imageInput" accept="image/*" hidden multiple />
-
-        <div class="upload-icon">↑</div>
-
-        <h2>Drop your images here</h2>
-
-        <p>
-          or
-          <button class="browse-btn" id="browseBtn">browse files</button>
-        </p>
-
-        <small>JPG, WebP • Up to 50MB per file</small>
-
-        <!-- Container for small upload previews -->
-        <div id="uploadPreviews" class="upload-previews"></div>
-
-        <!-- Clear All Button (Hidden by default) -->
-        <button id="clearBtn" class="clear-btn" style="display: none">
-          <i class="fas fa-trash-alt"></i> Clear All Files
-        </button>
-      </section>
-
-      <!-- Controls -->
-      <section class="panel">
-        <div class="panel-title">
-          <div>
-            <h2>Resize & compress</h2>
-            <p>Choose the exact output dimensions and quality</p>
+    <body>
+      <main class="app">
+        <header class="header">
+          <div class="logo">
+            <div class="logo-icon">✦</div>
+            <span>PixelShrink</span>
           </div>
 
-          <span class="settings-icon">⚙</span>
-        </div>
+          <span class="badge">100% Private</span>
+        </header>
 
-        <!-- Dimensions -->
-        <div class="dimension-section">
-          <div class="section-label">
-            <span>Dimensions</span>
-            <span id="originalDimensions">Original: —</span>
+        <section class="hero">
+          <p class="eyebrow">IMAGE OPTIMIZER</p>
+          <h1>Compress images.<br /><span>Keep the quality.</span></h1>
+          <p class="subtitle">
+            Reduce image file sizes directly in your browser. Your images never
+            leave your device.
+          </p>
+        </section>
+
+        <section class="upload-card" id="dropZone">
+          <input type="file" id="imageInput" accept="image/*" hidden multiple />
+
+          <div class="upload-icon">↑</div>
+
+          <h2>Drop your images here</h2>
+
+          <p>
+            or
+            <button class="browse-btn" id="browseBtn">browse files</button>
+          </p>
+
+          <small>JPG, WebP • Up to 50MB per file</small>
+
+          <div id="uploadPreviews" class="upload-previews"></div>
+
+          <button id="clearBtn" class="clear-btn" style="display: none">
+            <i class="fas fa-trash-alt"></i> Clear All Files
+          </button>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <div>
+              <h2>Resize & compress</h2>
+              <p>Choose the exact output dimensions and quality</p>
+            </div>
+
+            <span class="settings-icon">⚙</span>
           </div>
 
-          <div class="dimension-row">
-            <div class="dimension-input">
-              <label for="width">Width</label>
+          <div class="dimension-section">
+            <div class="section-label">
+              <span>Dimensions</span>
+              <span id="originalDimensions">Original: —</span>
+            </div>
 
-              <div class="input-with-unit">
-                <input type="number" id="width" min="1" placeholder="Width" />
-                <span>px</span>
+            <div class="dimension-row">
+              <div class="dimension-input">
+                <label for="width">Width</label>
+
+                <div class="input-with-unit">
+                  <input type="number" id="width" min="1" placeholder="Width" />
+                  <span>px</span>
+                </div>
+              </div>
+
+              <button
+                id="aspectLock"
+                class="aspect-lock active"
+                title="Keep aspect ratio"
+              >
+                <i class="fas fa-link"></i>
+              </button>
+
+              <div class="dimension-input">
+                <label for="height">Height</label>
+
+                <div class="input-with-unit">
+                  <input
+                    type="number"
+                    id="height"
+                    min="1"
+                    placeholder="Height"
+                  />
+                  <span>px</span>
+                </div>
               </div>
             </div>
 
-            <button
-              id="aspectLock"
-              class="aspect-lock active"
-              title="Keep aspect ratio"
+            <div class="resize-presets">
+              <button data-width="1920">1920px</button>
+              <button data-width="1280">1280px</button>
+              <button data-width="1080">1080px</button>
+              <button data-width="720">720px</button>
+              <button data-width="480">480px</button>
+            </div>
+          </div>
+
+          <div class="setting quality-setting">
+            <div class="setting-header">
+              <label for="quality">Quality</label>
+              <strong> <span id="qualityValue">80</span>% </strong>
+            </div>
+
+            <input type="range" id="quality" min="10" max="100" value="80" />
+          </div>
+
+          <div class="settings-grid">
+            <div class="setting">
+              <label for="format"> Output format </label>
+
+              <select id="format">
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/webp">WebP</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="compressBtn" class="compress-btn">
+            <span>Resize & compress All</span>
+            <span>→</span>
+          </button>
+        </section>
+
+        <section class="seo-content" style="margin-top: 80px; padding: 0 15px">
+          <div style="margin-bottom: 50px">
+            <h2
+              style="font-size: 24px; color: var(--text); margin-bottom: 15px"
             >
-              <i class="fas fa-link"></i>
-            </button>
+              How to Compress Images in Bulk
+            </h2>
+            <ol
+              style="
+                color: var(--muted);
+                line-height: 1.7;
+                font-size: 15px;
+                padding-left: 20px;
+              "
+            >
+              <li style="margin-bottom: 10px">
+                <strong>Drag and Drop:</strong> Select multiple JPEG or WebP
+                files (up to 50MB each) and drop them into the upload zone.
+              </li>
+              <li style="margin-bottom: 10px">
+                <strong>Set Dimensions:</strong> Choose to keep original
+                dimensions or resize them in bulk using our aspect ratio locker.
+              </li>
+              <li style="margin-bottom: 10px">
+                <strong>Adjust Quality:</strong> Use the slider to balance file
+                size and visual quality.
+              </li>
+              <li style="margin-bottom: 10px">
+                <strong>Download All:</strong> Click compress and download your
+                optimized images instantly as a zip or sequential files.
+              </li>
+            </ol>
+          </div>
 
-            <div class="dimension-input">
-              <label for="height">Height</label>
+          <div style="margin-bottom: 50px">
+            <h2
+              style="font-size: 24px; color: var(--text); margin-bottom: 15px"
+            >
+              Why Use PixelShrink?
+            </h2>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+              "
+            >
+              <div
+                style="
+                  background: var(--card);
+                  padding: 20px;
+                  border-radius: 12px;
+                  border: 1px solid var(--card-border);
+                "
+              >
+                <h3
+                  style="
+                    font-size: 16px;
+                    margin: 0 0 10px;
+                    color: var(--primary-light);
+                  "
+                >
+                  <i class="fa-solid fa-lock"></i> 100% Client-Side Privacy
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--muted);
+                    font-size: 13px;
+                    line-height: 1.6;
+                  "
+                >
+                  Your photos never leave your device. All compression happens
+                  locally in your browser using JavaScript. No servers, no data
+                  collection.
+                </p>
+              </div>
 
-              <div class="input-with-unit">
-                <input type="number" id="height" min="1" placeholder="Height" />
-                <span>px</span>
+              <div
+                style="
+                  background: var(--card);
+                  padding: 20px;
+                  border-radius: 12px;
+                  border: 1px solid var(--card-border);
+                "
+              >
+                <h3
+                  style="
+                    font-size: 16px;
+                    margin: 0 0 10px;
+                    color: var(--primary-light);
+                  "
+                >
+                  <i class="fa-solid fa-bolt"></i> Lightning Fast
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--muted);
+                    font-size: 13px;
+                    line-height: 1.6;
+                  "
+                >
+                  Because there are no upload or download times to a remote
+                  server, images are compressed instantly using your device's
+                  processing power.
+                </p>
+              </div>
+
+              <div
+                style="
+                  background: var(--card);
+                  padding: 20px;
+                  border-radius: 12px;
+                  border: 1px solid var(--card-border);
+                "
+              >
+                <h3
+                  style="
+                    font-size: 16px;
+                    margin: 0 0 10px;
+                    color: var(--primary-light);
+                  "
+                >
+                  <i class="fa-solid fa-layer-group"></i> Bulk Processing
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    color: var(--muted);
+                    font-size: 13px;
+                    line-height: 1.6;
+                  "
+                >
+                  Don't waste time doing it one by one. Select dozens of images
+                  at once and shrink them all with a single click.
+                </p>
               </div>
             </div>
           </div>
+        </section>
 
-          <div class="resize-presets">
-            <button data-width="1920">1920px</button>
-            <button data-width="1280">1280px</button>
-            <button data-width="1080">1080px</button>
-            <button data-width="720">720px</button>
-            <button data-width="480">480px</button>
-          </div>
-        </div>
-
-        <div class="setting quality-setting">
-          <div class="setting-header">
-            <label for="quality">Quality</label>
-            <strong> <span id="qualityValue">80</span>% </strong>
+        <footer>
+          <div class="footer-info">
+            <span
+              ><i class="fas fa-lock"></i> Your images stay on your device</span
+            >
+            <span>•</span>
+            <span>No upload required</span>
+            <span>•</span>
+            <span>©Sad Ibna Forid. All Rights Reserved</span>
           </div>
 
-          <input type="range" id="quality" min="10" max="100" value="80" />
-        </div>
-
-        <div class="settings-grid">
-          <div class="setting">
-            <label for="format"> Output format </label>
-
-            <select id="format">
-              <option value="image/jpeg">JPEG</option>
-              <option value="image/webp">WebP</option>
-            </select>
+          <div class="developer-links">
+            <a href="https://linkedin.com/in/sadudoy" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/sadudoy" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="mailto:sadudoy29@gmail.com">
+              <i class="fas fa-envelope"></i> Email
+            </a>
           </div>
-        </div>
+        </footer>
+      </main>
 
-        <button id="compressBtn" class="compress-btn">
-          <span>Resize & compress All</span>
-          <span>→</span>
-        </button>
-      </section>
-
-      <footer>
-        <div class="footer-info">
-          <span
-            ><i class="fas fa-lock"></i> Your images stay on your device</span
-          >
-          <span>•</span>
-          <span>No upload required</span>
-          <span>•</span>
-          <span>©Sad Ibna Forid. All Rights Reserved</span>
-        </div>
-
-        <div class="developer-links">
-          <a href="https://linkedin.com/in/sadudoy" target="_blank">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a href="https://github.com/sadudoy" target="_blank">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-          <a href="mailto:sadudoy29@gmail.com">
-            <i class="fas fa-envelope"></i> Email
-          </a>
-        </div>
-      </footer>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
+      <script src="script.js"></script>
+    </body>
+  </html>
 </html>
